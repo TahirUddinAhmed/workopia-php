@@ -38,3 +38,26 @@ function loadPartial($name) {
       echo "Partials {$partialPath} not found";
    }
 }
+
+/**
+ * Inspact a value(s)
+ * @param mixed $value
+ * @return void
+ */
+function inspact($value) {
+   echo "<pre>";
+   var_dump($value);
+   echo "</pre>";
+}
+
+/**
+ * Inspact a value and die
+ * @param mixed $value
+ * @return void
+ */
+function inspactAndDie($value) {
+   echo "<pre>";
+   var_dump($value);
+   echo "</pre>";
+   die();
+}
