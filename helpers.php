@@ -15,7 +15,13 @@ function basePath($path = '') {
  * @return void
  */
 function loadView($name) {
-   require basePath("views/{$name}.view.php");
+   $viewPath = basePath("views/{$name}.view.php");
+
+   if(file_exists($viewPath)) {
+      require $viewPath;
+   } else {
+      echo "View {$viewPath} not found";
+   }
 }
 
 /**
@@ -24,5 +30,11 @@ function loadView($name) {
  * @return void
  */
 function loadPartial($name) {
-   require basePath("views/partials/{$name}.php");
+   $partialPath = basePath("views/partials/{$name}.php");
+
+   if(file_exists($partialPath)) {
+      require $partialPath;
+   } else {
+      echo "Partials {$partialPath} not found";
+   }
 }
