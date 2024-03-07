@@ -1,7 +1,7 @@
 <?php
 require '../helpers.php';
 require basePath('Router.php');
-require basePath('database.php');
+require basePath('Database.php');
 
 // Instantiating the router
 $router = new Router();

@@ -62,3 +62,13 @@ function inspactAndDie($value) {
    echo "</pre>";
    die();
 }
+
+/**
+ * Formate salary
+ * 
+ * @param string $salary
+ * @return string FormattedSalary
+ */
+function formatSalary($salary) {
+   return '$' . number_format(floatVal($salary));
+}
