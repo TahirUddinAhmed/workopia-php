@@ -1,11 +1,9 @@
 <?php
 require '../helpers.php';
+require basePath('database.php');
+$config = require basePath('config/db.php');
 
-// Router logic
-
-
-// inspact($uri);
-// inspact($method);
+$db = new Database($config);
 
 require basePath('Router.php');
 
