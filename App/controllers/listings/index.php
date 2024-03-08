@@ -1,5 +1,5 @@
 <?php
-
+use Framework\Database;
 $config = require basePath('config/db.php');
 
 // instantiate Database class
