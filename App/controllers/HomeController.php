@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Controllers;
+
+use Framework\Database;
+
+class HomeController {
+   protected $db;
+
+   public function __construct() {
+    $config = require basePath('config/db.php');
+    // Instiating Database class
+    $this->db = new Database($config);
+   } 
+
+   public function index() {
+    $listings = $this->db->query("SELECT * FROM listings LIMIT 6")->fetchAll();
+
+    // inspact($listings);
+
+    loadView('home', [
+        'listings' => $listings,
+    ]);
+   }
+}
