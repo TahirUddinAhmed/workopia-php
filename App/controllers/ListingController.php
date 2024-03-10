@@ -20,4 +20,24 @@ class ListingController {
             'listings' => $listings
         ]);
     }
+
+    public function create() {
+        loadView('/listings/create');
+    }
+
+    public function show() {
+        // Get the listing ID
+        $id = $_GET['id'] ?? '';
+
+        $params = [
+            'id' => $id
+        ];
+
+        $listing = $this->db->query("SELECT * FROM listings WHERE id = :id", $params)->fetch();
+
+
+        loadView('listings/show', [
+            'listing' => $listing
+        ]);
+    }
 }
