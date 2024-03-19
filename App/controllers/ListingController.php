@@ -61,4 +61,26 @@ class ListingController {
             'listing' => $listing
         ]);
     }
+
+
+    /**
+     * Store data in database
+     * 
+     * @return void
+     */
+    public function store() {
+        $allowedFields = ['title', 'description', 'salary', 'requirements', 'benefits', 'company', 'address', 'city', 'state', 'phone', 'email'];
+        
+        $newListingData = array_intersect_key($_POST, array_flip($allowedFields));
+
+        $newListingData['user_id'] = 1;
+        $newListingData = array_map('sanitize', $newListingData);
+       
+        // same as using array_map method.
+        // $listingsFields = [];
+        // foreach($newListingData as $fields) {
+        //     $listingsFields[] = sanitize($fields);
+        // }
+        inspactAndDie($newListingData);
+    }
 }
