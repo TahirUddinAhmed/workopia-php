@@ -32,9 +32,11 @@
                 >Local</span
               >
             </li>
+            <?php if(!empty($listing->tags)): ?>
             <li class="mb-2">
               <strong>Tags:</strong> <?= $listing->tags ?>
             </li>
+            <?php endif; ?>
           </ul>
         </div>
       </div>
@@ -50,7 +52,7 @@
           <?= $listing->requirements ?>
         </p>
         <h3 class="text-lg font-semibold mt-4 mb-2 text-blue-500">Benefits</h3>
-        <p><?= $listing->benifits ?></p>
+        <p><?= $listing->benefits ?></p>
       </div>
       <p class="my-5">
         Put "Job Application" as the subject of your email and attach your

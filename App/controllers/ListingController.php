@@ -69,7 +69,7 @@ class ListingController {
      * @return void
      */
     public function store() {
-        $allowedFields = ['title', 'description', 'salary', 'requirements', 'benefits', 'company', 'address', 'city', 'state', 'phone', 'email'];
+        $allowedFields = ['title', 'description', 'salary', 'requirements', 'benefits', 'tags' , 'company', 'address', 'city', 'state', 'phone', 'email'];
         
         $newListingData = array_intersect_key($_POST, array_flip($allowedFields));
 
@@ -77,7 +77,7 @@ class ListingController {
 
         $newListingData = array_map('sanitize', $newListingData);
         
-        $requiredFields = ['title', 'description', 'email', 'city', 'state'];
+        $requiredFields = ['title', 'description', 'email', 'city', 'state', 'salary'];
         $errors = [];
 
         foreach($requiredFields as $fields) {
@@ -96,7 +96,35 @@ class ListingController {
             ]);
         } else {
             // Submit data
+            $fields = [];
+            foreach($newListingData as $field => $value) {
+                $fields[] = $field;
+            }
 
+            // Convert the array intro string 
+            $fields = implode(', ', $fields);
+
+            // inspactAndDie($fields);
+
+            $values = [];
+
+            foreach($newListingData as $field => $value) {
+                // Convert empty string to null
+                if($value === '') {
+                    $newListingData[$field] = null;
+                }
+                $values[] = ':' . $field;
+            }
+
+            // convert array into string 
+            $values = implode(', ', $values);
+
+            $query = "INSERT INTO listings ({$fields}) VALUES({$values})";
+            
+            $this->db->query($query, $newListingData);
+
+            redirect('/listings');
+            // inspactAndDie($values);
         }
     }
 }
