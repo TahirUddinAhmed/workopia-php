@@ -127,4 +127,22 @@ class ListingController {
             // inspactAndDie($values);
         }
     }
+
+    /**
+     * Delete single listing
+     * 
+     * @param int $params
+     * @return void
+     */
+    public function delete() {
+        $listingId = $_POST['listing-id'];
+
+        $params = [
+            'id' => $listingId
+        ];
+        $query = "DELETE FROM listings WHERE id = :id";
+        $this->db->query($query, $params);
+
+        redirect('/listings');
+    }
 }
