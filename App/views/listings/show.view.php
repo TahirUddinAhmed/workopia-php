@@ -12,8 +12,8 @@
       <div class="flex space-x-4 ml-4">
         <a href="/edit" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</a>
         <!-- Delete Form -->
-        <form method="POST" action="/listings/delete">
-          <input type="hidden" name="listing-id" value="<?= $listing->id ?>">
+        <form method="POST">
+          <input type="hidden" name="_method" value="DELETE">
           <button type="submit" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded">Delete</button>
         </form>
         <!-- End Delete Form -->

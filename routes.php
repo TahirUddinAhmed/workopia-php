@@ -7,7 +7,7 @@ $router->get('/listings/{id}', 'ListingController@show');
 // create job router
 $router->post('/listings', 'ListingController@store');
 // delete listing
-$router->post('/listings/delete', 'ListingController@delete');
+$router->delete('/listings/{id}', 'ListingController@destroy');
 
 // $router->get('/', 'controllers/home.php');
 // $router->get('/listings', 'controllers/listings/index.php');
