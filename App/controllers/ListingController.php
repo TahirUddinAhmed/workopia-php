@@ -124,6 +124,8 @@ class ListingController {
             
             $this->db->query($query, $newListingData);
 
+            $_SESSION['success_message'] = 'Your job listing is added successfully';
+
             redirect('/listings');
             // inspactAndDie($values);
         }
@@ -152,6 +154,9 @@ class ListingController {
 
         $this->db->query('DELETE FROM listings WHERE id = :id', $params);
         
+        // Set flash message
+        $_SESSION['success_message'] = 'Listing deleted successfully';
+
         redirect('/listings');
     }
 }
